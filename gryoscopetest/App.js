@@ -1,0 +1,109 @@
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Gyroscope } from 'expo-sensors';
+
+//expo install expo-sensors
+export default function App() {
+  const [data, setData] = useState({});
+
+  // Update the document title using the browser API
+  useEffect(() => {
+    console.log("start");
+    _toggle();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      console.log("exit");
+      _unsubscribe();
+    };
+  }, []);
+
+  const _toggle = () => {
+    if (this._subscription) {
+      console.log("unsubscribe");
+      _unsubscribe();
+    } else {
+      console.log("subscribe");
+      _subscribe();
+    }
+  };
+
+  const _slow = () => {
+    Gyroscope.setUpdateInterval(1000);
+  };
+
+  const _fast = () => {
+    Gyroscope.setUpdateInterval(16);
+  };
+
+  const _subscribe = () => {
+    this._subscription = Gyroscope.addListener(gyroscopeData => {
+      setData(gyroscopeData);
+    });
+  };
+
+  const _unsubscribe = () => {
+     if (this._subscription){
+       this._subscription.remove();
+     }
+  //  this._subscription && this._subscription.remove();
+    this._subscription = null;
+  };
+
+  let { x, y, z } = data;
+  return (
+      <View style={styles.sensor}>
+        <Text style={styles.text}>Gyroscope:</Text>
+        <Text style={styles.text}>
+          x: {round(x)} y: {round(y)} z: {round(z)}
+        </Text>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={_toggle} style={styles.button}>
+            <Text>Toggle</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
+            <Text>Slow</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={_fast} style={styles.button}>
+            <Text>Fast</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+  );
+}
+
+function round(n) {
+  if (!n) {
+    return 0;
+  }
+
+  return Math.floor(n * 100) / 100;
+}
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    marginTop: 15,
+  },
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#eee',
+    padding: 10,
+  },
+  middleButton: {
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderColor: '#ccc',
+  },
+  sensor: {
+    marginTop: 45,
+    paddingHorizontal: 10,
+  },
+  text: {
+    textAlign: 'center',
+  },
+});
