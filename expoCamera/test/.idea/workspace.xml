@@ -15,6 +15,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1WcdQI8gxcMiKDqxNpxSWY1q6j5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -59,6 +66,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="android" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="android" />
+      </scripts>
+      <node-interpreter value="$USER_HOME$/NodeJS/node/bin/node" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -80,6 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1579452798929</updated>
       <workItem from="1579452803086" duration="7867000" />
+      <workItem from="1579701790299" duration="328000" />
     </task>
     <servers />
   </component>
@@ -87,9 +105,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579453115736">
+    <state x="418" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579701874867">
       <screen x="0" y="34" width="1920" height="1046" />
     </state>
-    <state x="418" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1579453115736" />
+    <state x="418" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.34.1920.1046@0.34.1920.1046" timestamp="1579701874867" />
+    <state width="1874" height="276" key="GridCell.Tab.0.bottom" timestamp="1579702118073">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.bottom/0.34.1920.1046@0.34.1920.1046" timestamp="1579702118073" />
+    <state width="1874" height="276" key="GridCell.Tab.0.center" timestamp="1579702118068">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.center/0.34.1920.1046@0.34.1920.1046" timestamp="1579702118068" />
+    <state width="1874" height="276" key="GridCell.Tab.0.left" timestamp="1579702118067">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.left/0.34.1920.1046@0.34.1920.1046" timestamp="1579702118067" />
+    <state width="1874" height="276" key="GridCell.Tab.0.right" timestamp="1579702118072">
+      <screen x="0" y="34" width="1920" height="1046" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.right/0.34.1920.1046@0.34.1920.1046" timestamp="1579702118072" />
   </component>
 </project>

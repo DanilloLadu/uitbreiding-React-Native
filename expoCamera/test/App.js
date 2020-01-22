@@ -4,7 +4,7 @@ import {Camera} from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
 
 
-
+//expo install expo-camera
 export default function App() {
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(Camera.Constants.Type.back);

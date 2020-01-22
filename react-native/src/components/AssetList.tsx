@@ -11,6 +11,7 @@ export default function AssetList({navigation}) {
     const roomController: RoomController = new RoomController("http://danillo.be/");
 
 
+    // @ts-ignore
     const [room, setRoom] = useState(useSelector(state => state.room.selectedRoom));
     const [assets, setAssets] = useState([]);
     const [loading, setLoading] = useState(true);
