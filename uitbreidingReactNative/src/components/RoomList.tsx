@@ -3,6 +3,8 @@ import {Text, View, FlatList, TextInput, TouchableOpacity, Button} from 'react-n
 import {RoomCard} from "./RoomCard";
 import {RoomController} from "../controllers/roomController"
 import {SafeAreaView} from "react-navigation";
+import {Room} from "../models/room";
+import {textInput} from "../style/TemporaryStyle";
 
 type Props = {
     articles: String;
@@ -18,11 +20,19 @@ export default function RoomList({navigation}) {
 
     useEffect(() => {
 
-        roomController.getRoomsWithLowerHappinessScore(Number(description))
+        roomController.getRoomsWithLowerHappinessScore(99999999)
             .then(data => {
-                setRooms(data);
+                setRooms(data.filter((item: Room) => {
+                    return item.score < Number(description)
+                }));
             })
             .then(() => setLoading(false))
+
+        // roomController.getRoomsWithLowerHappinessScore(Number(description))
+        //     .then(data => {
+        //         setRooms(data);
+        //     })
+        //     .then(() => setLoading(false))
 
     }, [description]);
 
@@ -37,7 +47,7 @@ export default function RoomList({navigation}) {
         <SafeAreaView>
             <Text>HappinessScore</Text>
             <TextInput
-                style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                style={textInput.basic}
                 onChangeText={text => setDescription(text)}
                 value={description}
             />

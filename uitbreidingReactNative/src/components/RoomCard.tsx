@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button, View} from "react-native";
-import {H1, H2} from "../style/TemporaryStyle";
+import {Button, View, Text} from "react-native";
 import {useDispatch} from "react-redux";
 
 type Props = {
@@ -29,9 +28,9 @@ export const RoomCard: React.FunctionComponent<Props> = (room) => {
 
     return (
         <View>
-            <H1>{room.name}</H1>
-            <H2>{room.score}</H2>
-            <H2>{room.id}</H2>
+            <Text>{room.name}</Text>
+            <Text>{room.score}</Text>
+            <Text>{room.id}</Text>
             <Button title={'click me'}
                     onPress={() => {
                         getRoomIntoState(room);

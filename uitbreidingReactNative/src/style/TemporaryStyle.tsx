@@ -1,19 +1,33 @@
-import React from "react";
-import { Text, StyleSheet } from "react-native";
+import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-    h1: {
-        fontSize: 24
-    },
-    h2: {
-        fontSize: 18
+    container: {
+        marginTop: 150,
+        backgroundColor: '#ededed',
+        flexWrap: 'wrap'
     }
 });
 
-export const H1 = props => {
-    return <Text style={styles.h1}>{props.children}</Text>;
-};
+const buttons = StyleSheet.create({
+    primary: {
+        flex: 1,
+        height: 70,
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 20,
+        marginRight: 20
+    }
+});
 
-export const H2 = props => {
-    return <Text style={styles.h1}>{props.children}</Text>;
-};
+const textInput = StyleSheet.create({
+    basic: {
+        backgroundColor: 'red',
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1
+    }
+});
+
+export {styles, buttons, textInput}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {Button, View} from "react-native";
-import {H1} from "../style/TemporaryStyle";
+import {Button, View, Text} from "react-native";
+
 
 
 export const AssetCard = (asset) => {
@@ -23,7 +23,7 @@ export const AssetCard = (asset) => {
 
     return(
         <View>
-            <H1>{asset.name}</H1>
+            <Text>{asset.name}</Text>
             <Button title={'click'} onPress={ () => {
                 dispatchAsset(asset);
                 asset.navigation.navigate('AssetDetails', {});

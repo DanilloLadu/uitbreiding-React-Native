@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import {Button, Text, View} from "react-native";
-import {H2} from "../style/TemporaryStyle";
 import {TicketController} from "../controllers/ticketController";
 
 
@@ -26,7 +25,7 @@ export const TicketCard = (ticket) => {
 
     return(
         <View>
-            <H2>{ticket.description}</H2>
+            <Text>{ticket.description}</Text>
             <Text>upvotes : {ticket.votes}</Text>
             <Button title={'❤'} onPress={() => dispatchUpVotedTicket()} />
         </View>

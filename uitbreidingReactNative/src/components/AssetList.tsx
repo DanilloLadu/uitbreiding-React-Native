@@ -37,11 +37,13 @@ export default function AssetList({navigation}) {
                 Room: {room.name.toString()}
             </Text>
             <Text>Score: {room.score.toString()}</Text>
+
             <FlatList data={assets}
                       renderItem={({item}) => <AssetCard {...item} navigation={navigation}/>}
                       keyExtractor={item => item.id.toString()}
                       numColumns={3}
             />
+
             <Button title={"Happy"} onPress={() => {
                 roomController.updateRoomHappinessScore(room.id, "Happy").then(() => {
                     roomController.getRoomById(room.id).then(data => {

@@ -3,13 +3,12 @@ import {Text, View, Button, Image} from 'react-native';
 
 
 export default function CameraImage({navigation}) {
-    const [file, setFile] = useState('no uri');
+    const [file, setFile] = useState(navigation.getParam('uri'));
 
-    useEffect(() => {
-        setFile(navigation.getParam('uri'));
-    }, []);
+    // useEffect(() => {
+    //     setFile(navigation.getParam('uri'));
+    // }, []);
 
-    console.log(file.toString());
 
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
