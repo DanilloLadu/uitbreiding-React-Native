@@ -5,6 +5,16 @@ const styles = StyleSheet.create({
         marginTop: 150,
         backgroundColor: '#ededed',
         flexWrap: 'wrap'
+    },
+    MainContainer:
+        {
+            flex: 1
+        },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
     }
 });
 

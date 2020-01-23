@@ -1,10 +1,11 @@
 import React, {Component, useEffect, useState} from 'react';
-import {Text, View, FlatList, TextInput, TouchableOpacity, Button} from 'react-native';
+import {Text, View, FlatList, TextInput, TouchableOpacity} from 'react-native';
 import {RoomCard} from "./RoomCard";
 import {RoomController} from "../controllers/roomController"
 import {SafeAreaView} from "react-navigation";
 import {Room} from "../models/room";
-import {textInput} from "../style/TemporaryStyle";
+import {styles, textInput} from "../style/TemporaryStyle";
+import { Button , Appbar, Searchbar } from 'react-native-paper';
 
 type Props = {
     articles: String;
@@ -42,25 +43,28 @@ export default function RoomList({navigation}) {
         )
     }
 
+
     return (
+
         // safe area boundaries of a device
-        <SafeAreaView>
-            <Text>HappinessScore</Text>
-            <TextInput
-                style={textInput.basic}
-                onChangeText={text => setDescription(text)}
-                value={description}
-            />
+        <SafeAreaView style = {styles.MainContainer }>
 
             <FlatList
                 data={rooms}
                 renderItem={({item}) => <RoomCard navigation={navigation} {...item} />}
                 keyExtractor={item => item.id.toString()}
-                numColumns={2}
             />
-            <Button title={'CameraView'} onPress={() => navigation.navigate('CameraView')}/>
-            <Button title={'GyroscopeView'} onPress={() => navigation.navigate('GyroscopeView')}/>
+            <Appbar style={{position: 'absolute',left: 0,right: 0,bottom: 0}}>
+                <Appbar.Action icon="camera" onPress={() => navigation.navigate('CameraView')} />
+                <Appbar.Action icon="all-inclusive" onPress={() => navigation.navigate('GyroscopeView')} />
+                <Searchbar
+                    placeholder="Search"
+                    onChangeText={text => setDescription(text)}
+                    value={description}
+                />
+            </Appbar>
         </SafeAreaView>
+
     );
 
 };

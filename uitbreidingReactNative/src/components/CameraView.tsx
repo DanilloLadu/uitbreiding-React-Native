@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {Text, View, TouchableOpacity} from 'react-native';
 import {Camera} from 'expo-camera';
+import {Colors, IconButton} from "react-native-paper";
 
 
 export default function CameraView({navigation}) {
@@ -16,7 +17,6 @@ export default function CameraView({navigation}) {
             setHasPermission(status === 'granted');
         })();
     }, []);
-
 
 
     // @ts-ignore
@@ -53,7 +53,7 @@ export default function CameraView({navigation}) {
         return <Text>No access to camera</Text>;
     }
 
-        // @ts-ignore
+    // @ts-ignore
     return (
         <View style={{flex: 1}}>
             <Camera style={{flex: 1}} type={type} ref={ref => {
@@ -63,41 +63,48 @@ export default function CameraView({navigation}) {
                 <View
                     style={{
                         flex: 1,
-                        backgroundColor: 'transparent',
-                        flexDirection: 'row',
+                        backgroundColor: 'transparent'
+
                     }}>
-                    <TouchableOpacity
-                        style={{
-                            //   flex: 0.1,
-                            alignSelf: 'flex-end',
-                            alignItems: 'center',
-                        }}
+
+                    <IconButton
+                        icon="camera-front-variant"
+                        color={Colors.lightGreen500}
+                        size={50}
                         onPress={() => {
+                            if (type === Camera.Constants.Type.back) {
+                                console.log('frontCamera')
+                                setType(Camera.Constants.Type.front);
+                            } else {
+                                console.log('backCamera')
+                                setType(Camera.Constants.Type.back);
+                            }
 
-                            setType(
-                                type === Camera.Constants.Type.back
-                                    ? Camera.Constants.Type.front
-                                    : Camera.Constants.Type.back
-                            );
 
-                        }}>
-                        <Text style={{fontSize: 18, marginBottom: 10, color: 'white'}}> Flip </Text>
-                        <TouchableOpacity
-                            style={{
-                                //flex: 0.1,
-                                alignSelf: 'flex-end',
-                                alignItems: 'center',
-                            }}
-                            onPress={() => {
-                                takePicture().then();
+                        }}
+                        style={{
+                            position: 'absolute',
+                            right: 0
+                        }}
+                    />
 
-                            }}>
-                            <Text style={{fontSize: 18, marginBottom: 10, color: 'white'}}> Take </Text>
-                        </TouchableOpacity>
-                    </TouchableOpacity>
+
+                    <IconButton
+                        icon="camera"
+                        color={Colors.red500}
+                        size={50}
+                        onPress={() => {
+                            takePicture().then();
+                        }}
+                        style={{
+                            position: 'absolute',
+                            bottom: 0
+                        }}
+                    />
+
+
 
                 </View>
-
 
 
             </Camera>

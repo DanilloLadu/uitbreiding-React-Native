@@ -12,7 +12,7 @@ import {CreateTicket} from "./src/components/CreateTicket";
 import CameraView from "./src/components/CameraView";
 import GyroscopeView from "./src/components/GyroscopeView";
 import CameraImage from "./src/components/CameraImage";
-
+import { Provider as PaperProvider } from 'react-native-paper';
 
 export default function App() {
 
@@ -49,11 +49,14 @@ export default function App() {
     const AppContainer = createAppContainer(Stack);
 
     return (
+        <PaperProvider>
+            <Provider store={store}>
+
+                <AppContainer/>
+            </Provider>
+        </PaperProvider>
         // redux
         // navigator
-        <Provider store={store}>
 
-            <AppContainer/>
-        </Provider>
     );
 }
