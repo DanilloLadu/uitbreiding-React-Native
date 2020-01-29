@@ -13,6 +13,7 @@ import CameraView from "./src/components/CameraView";
 import GyroscopeView from "./src/components/GyroscopeView";
 import CameraImage from "./src/components/CameraImage";
 import { Provider as PaperProvider } from 'react-native-paper';
+import LottieAnimation from "./src/components/LottieAnimation";
 
 export default function App() {
 
@@ -39,7 +40,9 @@ export default function App() {
         },
         GyroscopeView: {
             screen: GyroscopeView
-        }
+        },LottieAnimation: {
+            screen: LottieAnimation
+        },
 
 
     });

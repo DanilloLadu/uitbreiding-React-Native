@@ -56,6 +56,7 @@ export default function RoomList({navigation}) {
             <Appbar style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
                 <Appbar.Action icon="camera" onPress={() => navigation.navigate('CameraView')}/>
                 <Appbar.Action icon="all-inclusive" onPress={() => navigation.navigate('GyroscopeView')}/>
+                <Appbar.Action icon="play" onPress={() => navigation.navigate('LottieAnimation')}/>
                 <Searchbar
                     placeholder="Search"
                     onChangeText={text => setDescription(text)}

@@ -19,7 +19,8 @@
     "react-native-paper": "^3.5.0",
     "react-native-safe-area-context": "^0.6.2",
     "react-native-web": "~0.11.7",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "lottie-react-native": "~2.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
