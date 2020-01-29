@@ -5,7 +5,7 @@ import {RoomController} from "../controllers/roomController"
 import {SafeAreaView} from "react-navigation";
 import {Room} from "../models/room";
 import {styles, textInput} from "../style/TemporaryStyle";
-import { Button , Appbar, Searchbar } from 'react-native-paper';
+import {Button, Appbar, Searchbar} from 'react-native-paper';
 
 type Props = {
     articles: String;
@@ -23,8 +23,8 @@ export default function RoomList({navigation}) {
 
         roomController.getRoomsWithLowerHappinessScore(99999999)
             .then(data => {
-                setRooms(data.filter((item: Room) => {
-                    return item.score < Number(description)
+                setRooms(data.filter((a: Room) => {
+                    return a.score < Number(description)
                 }));
             })
             .then(() => setLoading(false))
@@ -46,17 +46,16 @@ export default function RoomList({navigation}) {
 
     return (
 
-        // safe area boundaries of a device
-        <SafeAreaView style = {styles.MainContainer }>
+        <SafeAreaView style={styles.MainContainer}>
 
             <FlatList
                 data={rooms}
                 renderItem={({item}) => <RoomCard navigation={navigation} {...item} />}
                 keyExtractor={item => item.id.toString()}
             />
-            <Appbar style={{position: 'absolute',left: 0,right: 0,bottom: 0}}>
-                <Appbar.Action icon="camera" onPress={() => navigation.navigate('CameraView')} />
-                <Appbar.Action icon="all-inclusive" onPress={() => navigation.navigate('GyroscopeView')} />
+            <Appbar style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
+                <Appbar.Action icon="camera" onPress={() => navigation.navigate('CameraView')}/>
+                <Appbar.Action icon="all-inclusive" onPress={() => navigation.navigate('GyroscopeView')}/>
                 <Searchbar
                     placeholder="Search"
                     onChangeText={text => setDescription(text)}

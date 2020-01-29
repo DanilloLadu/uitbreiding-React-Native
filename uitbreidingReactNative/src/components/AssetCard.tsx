@@ -1,14 +1,14 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {Button, View, Text} from "react-native";
-
-
+import {View, Text} from "react-native";
+import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
+import {buttons} from "../style/TemporaryStyle";
 
 export const AssetCard = (asset) => {
 
     const dispatch = useDispatch();
 
-    function dispatchAsset(asset){
+    function dispatchAsset(asset) {
 
         const currentAsset = {
             id: asset.id,
@@ -21,13 +21,14 @@ export const AssetCard = (asset) => {
         });
     }
 
-    return(
+    return (
         <View>
-            <Text>{asset.name}</Text>
-            <Button title={'click'} onPress={ () => {
+            <Button mode="contained" style={buttons.second} onPress={() => {
                 dispatchAsset(asset);
                 asset.navigation.navigate('AssetDetails', {});
-            } }/>
+            }}>
+                {asset.name}
+            </Button>
         </View>
     );
 

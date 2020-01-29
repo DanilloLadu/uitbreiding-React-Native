@@ -12,9 +12,11 @@ const styles = StyleSheet.create({
         },
     fab: {
         position: 'absolute',
-        margin: 16,
         right: 0,
         bottom: 0,
+    },flexRow: {
+        flex: 1,
+        flexDirection: 'row'
     }
 });
 
@@ -27,6 +29,12 @@ const buttons = StyleSheet.create({
         alignItems: 'center',
         marginLeft: 20,
         marginRight: 20
+    },
+    second:{
+        margin: 10,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 

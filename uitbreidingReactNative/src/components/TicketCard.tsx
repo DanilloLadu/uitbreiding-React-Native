@@ -1,8 +1,9 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {Button, Text, View} from "react-native";
+import {View} from "react-native";
 import {TicketController} from "../controllers/ticketController";
-
+import {Button, Badge, Caption} from "react-native-paper";
+import {buttons, styles} from "../style/TemporaryStyle";
 
 export const TicketCard = (ticket) => {
 
@@ -10,7 +11,7 @@ export const TicketCard = (ticket) => {
     const dispatch = useDispatch();
 
 
-    function dispatchUpVotedTicket(){
+    function dispatchUpVotedTicket() {
         ticketController.postIncreaseVote(ticket.id).then();
         const upVotedTicket = {
             assetID: ticket.asset_id,
@@ -23,12 +24,16 @@ export const TicketCard = (ticket) => {
         });
     }
 
-    return(
+    return (
         <View>
-            <Text>{ticket.description}</Text>
-            <Text>upvotes : {ticket.votes}</Text>
-            <Button title={'❤'} onPress={() => dispatchUpVotedTicket()} />
+            <Button icon="plus" mode="contained" style={[buttons.second, styles.flexRow]} onPress={() => {
+                dispatchUpVotedTicket()
+            }}>
+                <Caption>{ticket.description}</Caption>
+                <Badge> {ticket.votes}</Badge>
+            </Button>
         </View>
+
     );
 
 };

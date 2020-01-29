@@ -3,6 +3,8 @@ import {Text, View, Button, FlatList, StyleSheet} from 'react-native';
 import {useSelector} from "react-redux";
 import {TicketController} from "../controllers/ticketController";
 import {TicketCard} from "./TicketCard";
+import {FAB, Title} from "react-native-paper";
+import {styles} from "../style/TemporaryStyle";
 
 export default function TicketList({navigation}) {
 
@@ -28,20 +30,25 @@ export default function TicketList({navigation}) {
     if (tickets !== null) {
         return (
             <View>
-                <Text>
-                    TicketList from asset : {selectedAsset.name}
-                </Text>
 
-                <FlatList data={tickets}
-                          renderItem={({item}) => <TicketCard {...item}/>}
-                          keyExtractor={item => item.id.toString()}
-                          numColumns={3}
+                    <Title>{selectedAsset.name}</Title>
+                    <FlatList data={tickets}
+                              renderItem={({item}) => <TicketCard {...item}/>}
+                              keyExtractor={item => item.id.toString()}
+                              numColumns={1}
+                    />
+
+
+
+
+                <FAB
+                    style={styles.fab}
+                    small
+                    icon="plus"
+                    onPress={() => {
+                        navigation.navigate('CreateTicket')
+                    }}
                 />
-
-
-                <Button title={"Add Ticket"} onPress={() => {
-                    navigation.navigate('CreateTicket')
-                }}/>
             </View>
 
 
@@ -50,9 +57,14 @@ export default function TicketList({navigation}) {
         return (
             <View>
                 <Text>No Tickets found</Text>
-                <Button title={"Add Ticket"} onPress={() => {
-                    navigation.navigate('CreateTicket')
-                }}/>
+                <FAB
+                    style={styles.fab}
+                    small
+                    icon="plus"
+                    onPress={() => {
+                        navigation.navigate('CreateTicket')
+                    }}
+                />
             </View>
         )
     }

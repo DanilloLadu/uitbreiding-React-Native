@@ -1,9 +1,11 @@
-import React, {Component, useEffect, useState} from 'react';
-import {Text, View, Button, FlatList} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Text, View, FlatList, Button} from 'react-native';
 import {useSelector} from "react-redux";
 import {AssetController} from "../controllers/assetController";
-import {AssetCard} from "./AssetCard";
 import {RoomController} from "../controllers/roomController";
+import {FAB, Portal, Provider, Title} from 'react-native-paper';
+import {AssetCard} from "./AssetCard";
+
 
 export default function AssetList({navigation}) {
 
@@ -15,6 +17,7 @@ export default function AssetList({navigation}) {
     const [room, setRoom] = useState(useSelector(state => state.room.selectedRoom));
     const [assets, setAssets] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
 
@@ -25,6 +28,7 @@ export default function AssetList({navigation}) {
             .then(() => setLoading(false));
     }, []);
 
+
     if (loading) {
         return (
             <Text>Loading...</Text>
@@ -32,32 +36,55 @@ export default function AssetList({navigation}) {
     }
 
     return (
-        <View>
-            <Text>
-                Room: {room.name.toString()}
-            </Text>
-            <Text>Score: {room.score.toString()}</Text>
 
+        <Provider>
+            <Title>{room.name.toString()} - Score: {room.score.toString()}</Title>
             <FlatList data={assets}
                       renderItem={({item}) => <AssetCard {...item} navigation={navigation}/>}
                       keyExtractor={item => item.id.toString()}
-                      numColumns={3}
+                      numColumns={2}
             />
 
-            <Button title={"Happy"} onPress={() => {
-                roomController.updateRoomHappinessScore(room.id, "Happy").then(() => {
-                    roomController.getRoomById(room.id).then(data => {
-                        setRoom(data);
-                    });
-                });
-            }}/>
-            <Button title={"UnHappy"} onPress={() => {
-                roomController.updateRoomHappinessScore(room.id, "Unhapy").then(() => {
-                    roomController.getRoomById(room.id).then(data => {
-                        setRoom(data);
-                    });
-                });
-            }}/>
-        </View>
+
+            <Portal>
+                <FAB.Group
+                    open={open}
+                    icon={open ? 'heart-broken' : 'heart'}
+                    actions={[
+                        {
+                            icon: 'plus', label: 'Happy', onPress: () => {
+                                roomController.updateRoomHappinessScore(room.id, "Happy").then(() => {
+                                    roomController.getRoomById(room.id).then(data => {
+                                        setRoom(data);
+                                    });
+                                });
+                            }
+                        },
+                        {
+                            icon: 'minus', label: 'UnHappy', onPress: () => {
+                                roomController.updateRoomHappinessScore(room.id, "Unhapy").then(() => {
+                                    roomController.getRoomById(room.id).then(data => {
+                                        setRoom(data);
+                                    });
+                                });
+                            }
+                        },
+                    ]}
+                    onStateChange={(openopenFab) => {
+                        setOpen(openopenFab.open);
+                    }}
+                    onPress={() => {
+                        if (open) {
+                            // do something if the speed dial is open
+                        }
+                    }}
+                />
+            </Portal>
+        </Provider>
+
+
     );
+
 };
+
+
