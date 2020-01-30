@@ -31,7 +31,8 @@ const buttons = StyleSheet.create({
         marginRight: 20
     },
     second:{
-        margin: 10,
+        flex: 1,
+        margin: 20,
         height: 50,
         alignItems: 'center',
         justifyContent: 'center'
